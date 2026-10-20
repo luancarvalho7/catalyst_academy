@@ -1,0 +1,87 @@
+:root {
+  color-scheme: dark;
+  --black: #010304;
+  --surface: #030a15;
+  --surface-raised: #07152a;
+  --blue: #0879ff;
+  --blue-bright: #1687ff;
+  --blue-line: #064da9;
+  --ink: #f8faff;
+  --body: #adc3e5;
+  --muted: #7991b7;
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --font-body: var(--font-jakarta), "Segoe UI", sans-serif;
+  --font-display: var(--font-tungsten), "Arial Narrow", sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  min-height: 100%;
+}
+
+html {
+  background: var(--black);
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  overflow-x: hidden;
+  background: var(--black);
+  color: var(--ink);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+button {
+  color: inherit;
+}
+
+button,
+input {
+  -webkit-tap-highlight-color: transparent;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+}
+
+svg {
+  display: block;
+}
+
+:focus-visible {
+  outline: 2px solid #58a9ff;
+  outline-offset: 3px;
+}
+
+::selection {
+  background: rgba(14, 119, 255, 0.45);
+  color: white;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}

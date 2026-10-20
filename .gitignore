@@ -1,0 +1,11 @@
+node_modules
+.next
+out
+*.log
+*.tsbuildinfo
+qa-*.png
+.chrome-qa/
+.edge-qa*/
+.env*
+!.env.example
+.DS_Store

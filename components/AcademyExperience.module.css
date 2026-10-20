@@ -1,0 +1,699 @@
+.shell {
+  width: min(100%, 1250px);
+  min-height: 100vh;
+  min-height: 100dvh;
+  margin: 0 auto;
+  padding: 16px 16px 18px;
+  display: grid;
+  grid-template-columns: 223px minmax(0, 1fr) 332px;
+  column-gap: 16px;
+  position: relative;
+}
+
+.mobileBar,
+.bottomNav,
+.scrim {
+  display: none;
+}
+
+.iconButton {
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(0, 80, 251, 0.4);
+  border-radius: 12px;
+  background: rgba(0, 80, 251, 0.08);
+  color: #dbe6ff;
+  cursor: pointer;
+}
+
+.iconButton.drawerClose {
+  display: none;
+}
+
+.brandRow {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.sidebar {
+  width: 215px;
+  min-width: 0;
+  animation: enterLeft 0.8s var(--ease-out) both;
+}
+
+.brand {
+  width: max-content;
+  margin-left: 12px;
+  display: flex;
+  flex-direction: column;
+  line-height: 1;
+  user-select: none;
+}
+
+.logo {
+  width: 150px;
+  height: auto;
+  display: block;
+}
+
+.academy {
+  margin-top: 8px;
+  color: #58739d;
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 0.27em;
+}
+
+.lessonNav {
+  margin-top: 37px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.lessonButton {
+  width: 100%;
+  min-height: 56px;
+  padding: 8px 12px 8px 10px;
+  display: grid;
+  grid-template-columns: 40px minmax(0, 1fr);
+  align-items: center;
+  column-gap: 13px;
+  border: 1px solid transparent;
+  border-radius: 12px;
+  background: transparent;
+  color: #9cb4d8;
+  text-align: left;
+  cursor: pointer;
+  transition: color 0.24s ease, border-color 0.24s ease, background 0.24s ease, box-shadow 0.24s ease, transform 0.24s var(--ease-out);
+}
+
+.lessonButton:hover {
+  color: white;
+  background: rgba(0, 80, 251, 0.1);
+  transform: translateX(2px);
+}
+
+.lessonNumber {
+  width: 38px;
+  height: 38px;
+  display: grid;
+  place-items: center;
+  border: 1px solid #345178;
+  border-radius: 50%;
+  color: #b9c9e0;
+  font-size: 14px;
+  font-weight: 500;
+  background: linear-gradient(145deg, rgba(12, 26, 49, 0.75), rgba(2, 6, 13, 0.25));
+  transition: inherit;
+}
+
+.lessonTitle {
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.55;
+}
+
+.lessonActive {
+  color: #f7f9ff;
+  border-color: #0050fb;
+  background: linear-gradient(105deg, rgba(0, 62, 196, 0.8), rgba(2, 20, 62, 0.9));
+  box-shadow:
+    inset 0 0 24px rgba(0, 80, 251, 0.16),
+    0 0 7px rgba(0, 80, 251, 0.85),
+    0 0 23px rgba(0, 80, 251, 0.3);
+}
+
+.lessonActive:hover {
+  background: linear-gradient(105deg, rgba(0, 68, 214, 0.86), rgba(2, 22, 68, 0.93));
+}
+
+.lessonActive .lessonNumber {
+  border-color: #0050fb;
+  color: white;
+  background: linear-gradient(145deg, #0a5cff, #0038c4);
+  box-shadow: 0 0 20px rgba(0, 80, 251, 0.62);
+}
+
+.lessonActive .lessonTitle {
+  font-weight: 700;
+}
+
+/* Already opened in this browser: a light dim, enough to read as "done", not enough to look disabled. */
+.lessonVisited {
+  opacity: 0.7;
+}
+
+.lessonVisited:hover,
+.lessonVisited:focus-visible {
+  opacity: 1;
+}
+
+.lessonContent {
+  min-width: 0;
+  padding-top: 4px;
+  animation: contentIn 0.78s var(--ease-out) both;
+}
+
+.lessonHeader {
+  padding: 0 10px;
+}
+
+.lessonKicker {
+  display: none;
+}
+
+.lessonHeader h1 {
+  font-size: clamp(37px, 4vw, 50px);
+  line-height: 1.08;
+  letter-spacing: -0.047em;
+  font-weight: 800;
+  color: #fbfcff;
+  text-shadow: 0 2px 18px rgba(255, 255, 255, 0.08);
+}
+
+.lessonHeader > p:last-child {
+  max-width: 610px;
+  margin-top: 8px;
+  color: #a7bcdf;
+  font-size: 18px;
+  line-height: 1.52;
+  letter-spacing: -0.018em;
+}
+
+.practiceCard {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1.76 / 1;
+  max-height: 340px;
+  min-height: 300px;
+  margin-top: 11px;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  border-radius: 30px;
+  background: #d5d5d5;
+  color: white;
+  font-family: Arial, sans-serif;
+  font-size: 9px;
+}
+
+/* Pinned to the viewport: the page scrolls past it, and only the chat inside it scrolls. */
+.supportRail {
+  position: sticky;
+  top: 16px;
+  align-self: start;
+  height: calc(100vh - 34px);
+  height: calc(100dvh - 34px);
+  min-width: 0;
+  padding-top: 53px;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  overflow: hidden;
+  animation: enterRight 0.85s var(--ease-out) 0.08s both;
+}
+
+.videoBlock {
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.videoLabel {
+  padding-left: 2px;
+  color: #6f8dc9;
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.videoFrame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border-radius: 14px;
+  background: #000;
+}
+
+.videoFrame iframe,
+.introVideo iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.introStage {
+  min-height: calc(100dvh - 40px);
+  display: grid;
+  place-items: center;
+  padding: 0 10px;
+}
+
+.introVideo {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border: 1px solid rgba(0, 80, 251, 0.3);
+  border-radius: 18px;
+  background: #000;
+  box-shadow: 0 0 60px rgba(0, 80, 251, 0.12);
+}
+
+.coach {
+  flex: 1;
+  min-height: 0;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid rgba(0, 80, 251, 0.3);
+  border-radius: 20px;
+  background: linear-gradient(180deg, rgba(0, 80, 251, 0.045), rgba(0, 80, 251, 0.01));
+}
+
+.chatBody {
+  flex: 1;
+  min-height: 0;
+  padding: 4px 6px 12px 2px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(110, 140, 200, 0.35) transparent;
+}
+
+.chatBody::-webkit-scrollbar {
+  display: none;
+}
+
+.emptyState {
+  margin: auto;
+  color: #7c97cf;
+  font-size: 15px;
+  font-weight: 500;
+  text-align: center;
+  letter-spacing: -0.01em;
+}
+
+.userMessage,
+.coachMessage {
+  font-size: 14px;
+  line-height: 1.5;
+  animation: bubbleIn 0.4s var(--ease-out) both;
+}
+
+.userMessage {
+  max-width: 85%;
+  align-self: flex-end;
+  padding: 9px 16px;
+  border-radius: 18px;
+  background: rgba(0, 80, 251, 0.22);
+  border: 1px solid rgba(0, 80, 251, 0.45);
+  color: #eef3ff;
+}
+
+.coachMessage {
+  max-width: 95%;
+  align-self: flex-start;
+  color: #d6e2ff;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.coachFailed {
+  color: #f0a3a3;
+}
+
+.coachTyping {
+  align-self: flex-start;
+  height: 21px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  animation: fadeIn 0.3s ease both;
+}
+
+.coachTyping > span[aria-hidden] {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #7c97cf;
+  animation: typingDot 1.1s ease-in-out infinite;
+}
+
+.coachTyping > span[aria-hidden]:nth-child(3) {
+  animation-delay: 0.15s;
+}
+
+.coachTyping > span[aria-hidden]:nth-child(4) {
+  animation-delay: 0.3s;
+}
+
+@keyframes typingDot {
+  0%, 60%, 100% { opacity: 0.3; transform: translateY(0); }
+  30% { opacity: 1; transform: translateY(-3px); }
+}
+
+.chatForm {
+  min-height: 52px;
+  padding: 6px 6px 6px 18px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid rgba(0, 80, 251, 0.4);
+  border-radius: 26px;
+  background: rgba(1, 8, 24, 0.7);
+  transition: border-color 0.2s ease;
+}
+
+.chatForm:focus-within {
+  border-color: #0050fb;
+}
+
+.chatForm input {
+  min-width: 0;
+  flex: 1;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: white;
+  font-size: 14px;
+}
+
+.chatForm input::placeholder {
+  color: #5f7bb5;
+  opacity: 1;
+}
+
+.chatForm button {
+  width: 36px;
+  height: 36px;
+  flex: 0 0 auto;
+  display: grid;
+  place-items: center;
+  border: 0;
+  border-radius: 50%;
+  background: #0050fb;
+  color: white;
+  cursor: pointer;
+  transition: opacity 0.2s ease, transform 0.2s var(--ease-out);
+}
+
+.chatForm button:disabled {
+  opacity: 0.25;
+  cursor: default;
+}
+
+.chatForm button:not(:disabled):hover {
+  transform: scale(1.06);
+}
+
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@keyframes enterLeft {
+  from { opacity: 0; transform: translateX(-18px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes enterRight {
+  from { opacity: 0; transform: translateX(18px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes contentIn {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes bubbleIn {
+  from { opacity: 0; transform: translateY(8px) scale(0.98); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@media (max-width: 1040px) {
+  .shell {
+    grid-template-columns: 196px minmax(0, 1fr) 300px;
+    column-gap: 16px;
+  }
+
+  .sidebar {
+    width: 196px;
+  }
+
+  .lessonTitle {
+    font-size: 12px;
+  }
+
+  .lessonHeader > p:last-child {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 850px) {
+  .shell {
+    width: 100%;
+    grid-template-columns: 1fr 300px;
+    padding: 20px;
+    row-gap: 24px;
+  }
+
+  .sidebar {
+    grid-column: 1 / -1;
+    width: auto;
+  }
+
+  .brand {
+    margin-left: 0;
+  }
+
+  .lessonNav {
+    margin-top: 24px;
+    padding-bottom: 8px;
+    flex-direction: row;
+    overflow-x: auto;
+  }
+
+  .lessonButton {
+    min-width: 190px;
+  }
+
+  .lessonContent {
+    padding-top: 0;
+  }
+
+  .lessonHeader {
+    padding: 0;
+  }
+
+  .supportRail {
+    padding-top: 0;
+  }
+
+  .practiceCard {
+    min-height: 270px;
+  }
+}
+
+@media (max-width: 650px) {
+  .shell {
+    display: block;
+    padding: 0 14px calc(92px + env(safe-area-inset-bottom));
+  }
+
+  .mobileBar {
+    position: sticky;
+    z-index: 15;
+    top: 0;
+    margin: 0 -14px;
+    padding: 10px 14px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid rgba(0, 80, 251, 0.22);
+    background: rgba(1, 3, 4, 0.88);
+    backdrop-filter: blur(14px);
+  }
+
+  .mobileLogo {
+    width: 112px;
+    height: auto;
+  }
+
+  .mobileBarSpacer {
+    width: 42px;
+  }
+
+  .scrim {
+    position: fixed;
+    z-index: 25;
+    inset: 0;
+    display: block;
+    background: rgba(0, 3, 10, 0.72);
+    backdrop-filter: blur(4px);
+    animation: fadeIn 0.2s ease both;
+  }
+
+  .sidebar {
+    position: fixed;
+    z-index: 30;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: min(310px, 86vw);
+    padding: 18px 14px 24px;
+    overflow-y: auto;
+    border-right: 1px solid rgba(0, 80, 251, 0.35);
+    background: #02050c;
+    transform: translateX(-102%);
+    transition: transform 0.38s var(--ease-out);
+    animation: none;
+  }
+
+  .sidebarOpen {
+    transform: translateX(0);
+  }
+
+  .iconButton.drawerClose {
+    display: grid;
+  }
+
+  .brand {
+    margin-left: 4px;
+  }
+
+  .logo {
+    width: 132px;
+  }
+
+  .academy {
+    font-size: 13px;
+  }
+
+  .lessonNav {
+    margin-top: 26px;
+    padding-bottom: 0;
+    flex-direction: column;
+    overflow: visible;
+  }
+
+  .lessonButton {
+    min-width: 0;
+    min-height: 54px;
+    grid-template-columns: 38px minmax(0, 1fr);
+    gap: 12px;
+  }
+
+  .lessonContent {
+    margin-top: 22px;
+  }
+
+  .paneHidden {
+    display: none;
+  }
+
+  .lessonKicker {
+    display: block;
+    margin-bottom: 8px;
+    color: #3d7bff;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .lessonHeader h1 {
+    font-size: 38px;
+  }
+
+  .lessonHeader > p:last-child {
+    font-size: 15px;
+  }
+
+  .practiceCard {
+    min-height: 220px;
+    margin-top: 17px;
+    border-radius: 22px;
+  }
+
+  /* Phone: the rail is its own tab, sized to the space between the top bar and the bottom tabs. */
+  .supportRail {
+    position: static;
+    height: calc(100dvh - 176px - env(safe-area-inset-bottom));
+    min-height: 360px;
+    margin-top: 18px;
+    padding-top: 0;
+    gap: 18px;
+    animation: none;
+  }
+
+  .introStage {
+    min-height: 0;
+    margin-top: 6px;
+    padding: 0;
+  }
+
+  .bottomNav {
+    position: fixed;
+    z-index: 20;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding: 8px 14px calc(8px + env(safe-area-inset-bottom));
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    border-top: 1px solid rgba(0, 80, 251, 0.3);
+    background: rgba(1, 4, 10, 0.94);
+    backdrop-filter: blur(16px);
+  }
+
+  .bottomNav button {
+    min-height: 52px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+    border: 1px solid transparent;
+    border-radius: 14px;
+    background: transparent;
+    color: #6f8dc9;
+    font-size: 11.5px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: color 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+  }
+
+  .bottomNav .tabActive {
+    border-color: rgba(0, 80, 251, 0.55);
+    background: rgba(0, 80, 251, 0.2);
+    color: white;
+  }
+
+}
